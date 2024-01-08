@@ -1,8 +1,9 @@
 {
-    "id": "YOUR MODULE ID",
-    "title": "YOUR MODULE TITLE",
-    "description": "YOUR MODULE DESCRIPTION",
+    "id": "debugger",
+    "title": "🕷️ Debugger (Library)",
+    "description": "Library that adds debugger helpers",
     "version": "1.0.0",
+    "library": true,
     "authors": [
         {
             "name": "ZotyDev",
@@ -25,12 +26,12 @@
         "verified": "11"
     },
     "license": "./LICENSE",
-    "url": "https://github.com/USERNAME/MODULE",
-    "bugs": "https://github.com/USERNAME/MODULE/issues",
-    "manifest": "https://github.com/USERNAME/MODULE/releases/latest/download/module.json",
-    "download": "https://github.com/USERNAME/MODULE/releases/latest/download/module.zip",
-    "readme": "https://github.com/USERNAME/MODULE/blob/main/README.md",
-    "changelog": "https://github.com/USERNAME/MODULE/blob/main/CHANGELOG.md",
+    "url": "https://github.com/ZotyDev/FoundryVTT-Debugger",
+    "bugs": "https://github.com/ZotyDev/FoundryVTT-Debugger/issues",
+    "manifest": "https://github.com/ZotyDev/FoundryVTT-Debugger/releases/latest/download/module.json",
+    "download": "https://github.com/ZotyDev/FoundryVTT-Debugger/releases/latest/download/module.zip",
+    "readme": "https://github.com/ZotyDev/FoundryVTT-Debugger/blob/main/README.md",
+    "changelog": "https://github.com/ZotyDev/FoundryVTT-Debugger/blob/main/CHANGELOG.md",
     "relationships": {},
     "esmodules": [
         "./module/scripts/module.js"
