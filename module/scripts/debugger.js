@@ -139,8 +139,21 @@ export class Debugger {
     // Dump the log to a file
     ////////////////////////////////////////////////////////////////////////////
     async dump() {
-        const newFile = new File([this._log], `${this.module}_log.json`, { type: 'application/json' });
-        await FilePicker.upload('data', './debugger', newFile, {}, { notify: false });
+        // Check if current user has enough permissions to dump logs
+        if (game.permissions.FILES_BROWSE.includes(game.user.role) && game.permissions.FILES_UPLOAD.includes(game.user.role)) {
+            // Make sure the debugger folder exists
+            Utils.MakeSureFolder('./debugger');
+
+            // Upload to server
+            const newFile = new File([this._log], `${this.module}_log.json`, { type: 'application/json' });
+            await FilePicker.upload('data', './debugger', newFile, {}, { notify: false });
+
+        } else {
+            console.error(`[${C.NAME}] current user lacks enough permission to dump log to file`);
+        }
+
+        // Download log
+        saveDataToFile(this._log, 'application/json', `${this.module}.log`);
     }
 
     ////////////////////////////////////////////////////////////////////////////
@@ -150,6 +163,5 @@ export class Debugger {
         for (const debug of Debugger.debuggers) {
             await debug.dump();
         }
-        console.info(`[${C.NAME}] Dumped all logs to "./debugger"`);
     }
 }

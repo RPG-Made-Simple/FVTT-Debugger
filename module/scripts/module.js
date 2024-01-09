@@ -18,16 +18,11 @@ Hooks.on('init', () => {
         // Setup the API
         window['Debugger'] = Debugger;
 
-        // Make sure the required folder exists
-        Utils.MakeSureFolder('./debugger');
-
-
-        const dbg = new Debugger('debugger', '🕷️ Debugger', true, true);
+        const dbg = new Debugger('debugger', '🕷️ Debugger', true, false);
         dbg.info('Ready!');
         dbg.info(`Version ${game.modules.get('debugger').version}`);
         dbg.info('Library By ZotyDev');
         dbg.warn('Beware! Bugs may be present!!');
-        dbg.warn('Remember to always pop your groups!');
 
         Hooks.call('debugger.ready');
     });
