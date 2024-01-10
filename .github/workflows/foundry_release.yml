@@ -30,6 +30,7 @@ jobs:
             echo "'module.json' version is '${{ env.VERSION }}'"
             echo "tag version is '${{ github.ref_name }}'"
             exit 1
+          fi
 
       # Get the env values from the modified module.json
       - name: Get Module Information
