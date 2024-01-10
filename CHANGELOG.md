@@ -1,9 +1,5 @@
 # 🕷️ Debugger Changelog
 
-## Version 1.0.1
-
-- *CI/DI* - Github workflow now releases the module to Foundry.
-
 ## Version 1.0.0
 
 This module only exists because I want better debug informations, if you don't want it, please don't use this module, it is really not intended for normal situations and/or small or simple modules. If your module already works fine and you never wanted a solution that logs things for you, then great this module is not for you! Now, if you always find it hard to spot problems and finds yourself lacking enough info to fix errors, you should use **Debugger**.
@@ -18,5 +14,6 @@ This module only exists because I want better debug informations, if you don't w
 - *API* - Added [`Debugger.dump()`](https://modules.zoty.dev/debugger/apiReference.html#dump)
 - *API* - Added [`dumpAll()`](https://modules.zoty.dev/debugger/apiReference.html#dump-all)
 - *Internal* - No `file` or `folder` gets created unless requested.
+- *CI/DI* - Github workflow now releases the module to Foundry.
 
 ##

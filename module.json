@@ -2,7 +2,7 @@
     "id": "debugger",
     "title": "🕷️ Debugger (Library)",
     "description": "Library that adds debugger helpers",
-    "version": "1.0.1",
+    "version": "1.0.0",
     "library": true,
     "authors": [
         {
