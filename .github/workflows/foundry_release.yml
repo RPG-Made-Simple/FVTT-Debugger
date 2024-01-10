@@ -63,8 +63,8 @@ jobs:
       - name: Release to Foundry VTT
         run: |
           curl -X POST "https://api.foundryvtt.com/_api/packages/release_version/" \
-          -H "Content-Type: application/json" \
-          -H "Authorization: fvttp_${{ secrets.FOUNDRY_RELEASE_TOKEN }}" \
+          -H "Content-Type": "application/json" \
+          -H "Authorization": "${{ secrets.FOUNDRY_RELEASE_TOKEN }}" \
           -d '{
             "id": "${{ env.MODULE }}",
             "dry-run": true,
