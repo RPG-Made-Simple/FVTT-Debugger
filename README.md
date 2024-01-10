@@ -12,7 +12,7 @@
 
 A FoundryVTT library that provides some helper methods to make debugging easier, specially if you want a easy way to **save and analyse individual modules with the a timestamp**.
 
-_Disclaimer: This module is not for everyone, it is something that I created to help me with some complex behaviors that I'm trying to fix in other modules, I don't recommend **Debugger** for simple and/or small modules since it would be like killing a ant with a shotgun. Now, if you find yourself always needing more debugging information and fin it hard to spot the logs from your module, then **Debugger** is for you!_
+_Disclaimer: This module is not for everyone, it is something that I created to help me with some complex behaviors that I'm trying to fix in other modules, I don't recommend **Debugger** for simple and/or small modules since it would be like killing a ant with a shotgun. Now, if you find yourself always needing more debugging information and find it hard to spot the logs from your module, then **Debugger** is for you!_
 
 ### Note for Developers (modules and macros)
 Take a look at the [Documentation](https://modules.zoty.dev/debugger/introduction.html)
@@ -20,6 +20,10 @@ Take a look at the [Documentation](https://modules.zoty.dev/debugger/introductio
 <a href='https://ko-fi.com/T6T8IFCB5' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi5.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
 ---
+## Supported Versions
+- **V11**
+- ~~**V12**~~ _as soon as it gets released_
+
 ## Main Features
 - Create a `Debugger` with prefix and special arguments.
 - Save logs at `./debugger/`.

@@ -6,7 +6,7 @@ on:
       - '*'
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -25,6 +25,22 @@ jobs:
           readme: https://github.com/${{ github.repository }}/blob/main/README.md
           changelog: https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md
 
+      # Get the env values from the modified module.json
+      - name: Get ENV values
+        run: |
+          MODULE=$(jq -r '.id' module.json)
+          echo "MODULE=$MODULE" >> $GITHUB_ENV
+          VERSION=$(jq -r '.version' module.json)
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          MANIFEST=$(jq -r '.manifest' module.json)
+          echo "MANIFEST=$MANIFEST" >> $GITHUB_ENV
+          CHANGELOG=$(jq -r '.changelog' module.json)
+          echo "CHANGELOG=$CHANGELOG" >> $GITHUB_ENV
+          MINIMUM=$(jq -r '.compatibility.minimum' module.json)
+          echo "MINIMUM=$MINIMUM" >> $GITHUB_ENV
+          VERIFIED=$(jq -r '.compatibility.verified' module.json)
+          echo "VERIFIED=$VERIFIED" >> $GITHUB_ENV
+
       # Zip the files into module.zip
       - run: zip -r ./module.zip module.json LICENSE module/
 
@@ -37,8 +53,28 @@ jobs:
           begin-pattern: '/^## Version ${{ github.ref_name }}/'
           end-pattern: '/^## /'
 
-      # Create the release
-      - uses: ncipollo/release-action@v1
-        with:
-          artifacts: "module.zip,module.json"
-          bodyfile: RELEASE.md
+      # # Create the release
+      # - uses: ncipollo/release-action@v1
+      #   with:
+      #     artifacts: "module.zip,module.json"
+      #     bodyfile: RELEASE.md
+
+      # Send the release to FoundryVTT
+      - name: Release to Foundry VTT
+        run: |
+          curl -X POST "https://api.foundryvtt.com/_api/packages/release_version/" \
+          -H "Content-Type: application/json" \
+          -H "Authorization: fvttp_${{ secrets.FOUNDRY_RELEASE_TOKEN }}" \
+          -d '{
+            "id": "${{ env.MODULE }}",
+            "dry-run": true,
+            "release": {
+              "version": "${{ env.VERSION }}",
+              "manifest": "${{ env.MANIFEST }}",
+              "notes": "${{ env.CHANGELOG }}",
+              "compatibility": {
+                "minimum": "${{ env.MINIMUM }}",
+                "verified": "${{ env.VERIFIED }}"
+              }
+            }
+          }'

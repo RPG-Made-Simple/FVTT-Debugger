@@ -11,13 +11,25 @@
 import { Constants as C } from './constants.js';
 import { Utils } from './utils.js'
 
+/**
+ * @module Debugger
+ * @description This is the main module of Debugger.
+ * <b>It has all the API methods that will be exposed.</b>
+ *
+ * @author ZotyDev
+ */
 export class Debugger {
     static SHOULD_DEBUG = true;
     static debuggers = [];
 
-    ////////////////////////////////////////////////////////////////////////////
-    // Constructor
-    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * @description Creates a Debugger instance.
+     * @param {String} module
+     * @param {String} prefix
+     * @param {Boolean} should_debug
+     * @param {Boolean} should_save
+     * @returns
+     */
     constructor(module, prefix, should_debug, should_save) {
         // Check if the module parameter is valid
         if (foundry.utils.isEmpty(module)) {
@@ -60,9 +72,10 @@ export class Debugger {
         Debugger.debuggers.push(this);
     }
 
-    ////////////////////////////////////////////////////////////////////////////
-    // Should debug (all)
-    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * @description Sets whether or not Debugger will be enabled globally
+     * @param {Boolean} should_debug
+     */
     static shouldDebugGlobal(should_debug) {
         Debugger.SHOULD_DEBUG = should_debug;
     }
