@@ -85,27 +85,3 @@ jobs:
               }
             }
           }'
-
-  # If the release fails, delete the tag that triggered it
-  delete-tag:
-    runs-on: ubuntu-latest
-    needs: release
-    if: failure()
-    steps:
-      # Checkout to latest commit
-      - name: Checkout to Latest Commit
-        uses: actions/checkout@v3
-
-      # Configures Git
-      - name: Configures Git
-        run: |
-          git config --global user.name 'ZotyDev'
-          git config --global user.email 'leonardokronbauer2002@gmail.com'
-
-      # Delete the Tag because yes
-      - name: Delete Tag
-        run: |
-          git push --delete origin ${{ github.ref_name }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.TAG_DELETE_TOKEN }}
-
