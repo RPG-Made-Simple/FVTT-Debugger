@@ -1,9 +1,7 @@
 name: Create Foundry Release
 
 on:
-  push:
-    tags:
-      - '*'
+  workflow_dispatch:
 
 jobs:
   release:
@@ -11,27 +9,33 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v3
+      # Checkout to latest commit
+      - name: Checkout to Latest Commit
+        uses: actions/checkout@v3
+
+      # Get the module version
+      - name: Get Module Version
+        run: |
+          VERSION=$(jq -r '.version' module.json)
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       # Substitute the values inside module.json
-      - uses: microsoft/variable-substitution@v1
-        with:
-          files: 'module.json'
-        env:
-          version: ${{ github.ref_name }}
-          url: https://github.com/${{ github.repository }}
-          manifest: https://github.com/${{ github.repository }}/releases/latest/download/module.json
-          download: https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/module.zip
-          readme: https://github.com/${{ github.repository }}/blob/main/README.md
-          changelog: https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md
+      # - uses: microsoft/variable-substitution@v1
+      #   with:
+      #     files: 'module.json'
+      #   env:
+      #     version: ${{ github.ref_name }}
+      #     url: https://github.com/${{ github.repository }}
+      #     manifest: https://github.com/${{ github.repository }}/releases/latest/download/module.json
+      #     download: https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/module.zip
+      #     readme: https://github.com/${{ github.repository }}/blob/main/README.md
+      #     changelog: https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md
 
       # Get the env values from the modified module.json
-      - name: Get ENV values
+      - name: Get Module Information
         run: |
           MODULE=$(jq -r '.id' module.json)
           echo "MODULE=$MODULE" >> $GITHUB_ENV
-          VERSION=$(jq -r '.version' module.json)
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
           MANIFEST=$(jq -r '.manifest' module.json)
           echo "MANIFEST=$MANIFEST" >> $GITHUB_ENV
           CHANGELOG=$(jq -r '.changelog' module.json)
@@ -42,25 +46,28 @@ jobs:
           echo "VERIFIED=$VERIFIED" >> $GITHUB_ENV
 
       # Zip the files into module.zip
-      - run: zip -r ./module.zip module.json LICENSE module/
+      - name: Package Release
+        run: zip -r ./module.zip module.json LICENSE module/
 
       # Generate notes
-      - uses: CSchoel/release-notes-from-changelog@v1
+      - name: Generate Changelog
+        uses: CSchoel/release-notes-from-changelog@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          version: ${{ github.ref_name }}
-          begin-pattern: '/^## Version ${{ github.ref_name }}/'
+          version: ${{ env.VERSION }}
+          begin-pattern: '/^## Version ${{ env.VERSION }}/'
           end-pattern: '/^## /'
 
-      # # Create the release
-      # - uses: ncipollo/release-action@v1
-      #   with:
-      #     artifacts: "module.zip,module.json"
-      #     bodyfile: RELEASE.md
+      # Create the release
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "module.zip,module.json"
+          bodyfile: RELEASE.md
 
       # Send the release to FoundryVTT
-      - name: Release module to Foundry VTT
+      - name: Release Module to FoundryVTT
         run: |
           curl -X POST "https://api.foundryvtt.com/_api/packages/release_version/" \
           -H "Content-Type: application/json" \
