@@ -6,6 +6,7 @@ on:
       - '*'
 
 jobs:
+  # Release the packet
   release:
     runs-on: ubuntu-latest
     permissions:
@@ -21,17 +22,14 @@ jobs:
           VERSION=$(jq -r '.version' module.json)
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
-      # Substitute the values inside module.json
-      # - uses: microsoft/variable-substitution@v1
-      #   with:
-      #     files: 'module.json'
-      #   env:
-      #     version: ${{ github.ref_name }}
-      #     url: https://github.com/${{ github.repository }}
-      #     manifest: https://github.com/${{ github.repository }}/releases/latest/download/module.json
-      #     download: https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/module.zip
-      #     readme: https://github.com/${{ github.repository }}/blob/main/README.md
-      #     changelog: https://github.com/${{ github.repository }}/blob/main/CHANGELOG.md
+      # Check if tag version and 'module.json' version are the same
+      - name: Check if 'module.json' is valid
+        run: |
+          if [ "${{ env.VERSION }}" != "${{ github.ref_name }}"]; then
+            echo "Invalid 'module.json' - version difference"
+            echo "'module.json' version is '${{ env.VERSION }}'"
+            echo "tag version is '${{ github.ref_name }}'"
+            exit 1
 
       # Get the env values from the modified module.json
       - name: Get Module Information
@@ -87,3 +85,23 @@ jobs:
               }
             }
           }'
+
+  # If the release fails, delete the tag that triggered it
+  delete-tag:
+    runs-on: ubuntu-latest
+    if: failure()
+    steps:
+      # Checkout to latest commit
+      - name: Checkout to Latest Commit
+        uses: actions/checkout@v3
+
+      # Configures Git
+      - name: Configures Git
+        run: |
+          git config --global user.name 'ZotyDev'
+          git config --global user.email 'leonardokronbauer2002@gmail.com'
+
+      # Delete the Tag
+      - name: Delete Tag
+        run: |
+          git push --delete origin ${{ github.ref_name }}
