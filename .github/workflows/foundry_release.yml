@@ -25,7 +25,7 @@ jobs:
             exit 1
           fi
 
-      # Get the module version
+      # Get the module version and name
       - name: Get Module Version
         run: |
           VERSION=$(jq -r '.version' module.json)
@@ -83,7 +83,7 @@ jobs:
           -H "Authorization: ${{ secrets.FOUNDRY_RELEASE_TOKEN }}" \
           -d '{
             "id": "${{ env.MODULE }}",
-            "dry-run": false,
+            "dry-run": true,
             "release": {
               "version": "${{ env.VERSION }}",
               "manifest": "${{ env.MANIFEST }}",
@@ -94,3 +94,14 @@ jobs:
               }
             }
           }'
+
+      # Send a notification to discord
+      - name: Discord Message Notify
+        uses: appleboy/discord-action@v1.0.0
+        with:
+          webhook_id: ${{ secrets.DISCORD_ANNOUNCEMENT_WEBHOOK_ID }}
+          webhook_token: ${{ secrets.DISCORD_ANNOUNCEMENT_WEBHOOK_TOKEN }}
+          color: "#ff0088"
+          avatar_url: "https://media.discordapp.net/attachments/1075015857719230484/1194581653792759908/bot_avatar.png"
+          username: "Zoty"
+          message: "${{ github.repository }} got a new release: ${{ env.VERSION }}"
