@@ -96,17 +96,3 @@ jobs:
               }
             }
           }'
-
-      # Send a discord notification
-      - name: Discord Webhook Action
-        uses: tsickert/discord-webhook@v5.4.0
-        with:
-          webhook-url: https://discord.com/api/webhooks/${{ secrets.DISCORD_ANNOUNCEMENT_WEBHOOK_ID }}/${{ secrets.DISCORD_ANNOUNCEMENT_WEBHOOK_TOKEN }}
-          content: "<@&1194266914126581820>"
-          username: "Module Update"
-          avatar-url: "https://media.discordapp.net/attachments/1075015857719230484/1194581653792759908/bot_avatar.png"
-          embed-title: "${{ env.TITLE }} - Version ${{ env.VERSION }}"
-          embed-uril: "https://foundryvtt.com/packages/${{ env.MODULE }}"
-          embed-description: "${{ env.CHANGELOG_TEXT }}"
-          embed-color: "#ff0088"
-
