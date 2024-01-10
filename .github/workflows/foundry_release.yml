@@ -16,6 +16,15 @@ jobs:
       - name: Checkout to Latest Commit
         uses: actions/checkout@v3
 
+      # Check if tag already exists
+      - name: Verify if tag is not duplicate
+        id: check-tag
+        run: |
+          if git rev-parse "${{ github.action_ref }}" >/dev/null 2>&1; then
+            echo "Tag already exists"
+            exit 1
+          fi
+
       # Get the module version
       - name: Get Module Version
         run: |
@@ -37,14 +46,13 @@ jobs:
         run: |
           MODULE=$(jq -r '.id' module.json)
           echo "MODULE=$MODULE" >> $GITHUB_ENV
-          MANIFEST=$(jq -r '.manifest' module.json)
-          echo "MANIFEST=$MANIFEST" >> $GITHUB_ENV
-          CHANGELOG=$(jq -r '.changelog' module.json)
-          echo "CHANGELOG=$CHANGELOG" >> $GITHUB_ENV
           MINIMUM=$(jq -r '.compatibility.minimum' module.json)
           echo "MINIMUM=$MINIMUM" >> $GITHUB_ENV
           VERIFIED=$(jq -r '.compatibility.verified' module.json)
           echo "VERIFIED=$VERIFIED" >> $GITHUB_ENV
+
+          echo "MANIFEST=https://github.com/${{ github.repository }}/releases/download/${{ env.VERSION }}/module.json" >> $GITHUB_ENV
+          echo "CHANGELOG=https://github.com/${{ github.repository }}/releases/tag/${{ env.VERSION }}" >> $GITHUB_ENV
 
       # Zip the files into module.zip
       - name: Package Release
