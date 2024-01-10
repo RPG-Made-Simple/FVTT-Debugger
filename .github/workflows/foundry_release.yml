@@ -60,7 +60,7 @@ jobs:
       #     bodyfile: RELEASE.md
 
       # Send the release to FoundryVTT
-      - name: Release to Foundry VTT
+      - name: Release module to Foundry VTT
         run: |
           curl -X POST "https://api.foundryvtt.com/_api/packages/release_version/" \
           -H "Content-Type": "application/json" \
