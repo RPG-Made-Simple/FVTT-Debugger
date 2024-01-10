@@ -25,11 +25,13 @@ jobs:
             exit 1
           fi
 
-      # Get the module version and name
+      # Get the module version and title
       - name: Get Module Version
         run: |
           VERSION=$(jq -r '.version' module.json)
           echo "VERSION=$VERSION" >> $GITHUB_ENV
+          TITLE=$(jq -r '.title' module.json)
+          echo "TITLE=$TITLE" >> $GITHUB_ENV
 
       # Check if tag version and 'module.json' version are the same
       - name: Check if 'module.json' is valid
@@ -104,4 +106,10 @@ jobs:
           color: "#ff0088"
           avatar_url: "https://media.discordapp.net/attachments/1075015857719230484/1194581653792759908/bot_avatar.png"
           username: "Zoty"
-          message: "${{ github.repository }} got a new release: ${{ env.VERSION }}"
+          message: |
+            MODULE UPDATED
+            Module     : ${{ env.TITLE }}
+            Version    : ${{ env.VERSION }}
+            Link       : https://foundryvtt.com/packages/${{ env.MODULE }}
+            Repository : ${{ github.repository }}
+            Changelog  : ${{ env.CHANGELOG }}
