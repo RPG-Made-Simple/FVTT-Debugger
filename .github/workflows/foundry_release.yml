@@ -98,18 +98,15 @@ jobs:
           }'
 
       # Send a discord notification
-      - name: Discord Message Notify
-        uses: appleboy/discord-action@v1.0.0
+      - name: Discord Webhook Action
+        uses: tsickert/discord-webhook@v5.4.0
         with:
-          webhook_id: ${{ secrets.DISCORD_ANNOUNCEMENT_WEBHOOK_ID }}
-          webhook_token: ${{ secrets.DISCORD_ANNOUNCEMENT_WEBHOOK_TOKEN }}
-          color: "#ff0088"
-          avatar_url: "https://media.discordapp.net/attachments/1075015857719230484/1194581653792759908/bot_avatar.png"
-          username: "Zoty"
-          message: |
-            MODULE UPDATED
-            Module     : ${{ env.TITLE }}
-            Version    : ${{ env.VERSION }}
-            Link       : https://foundryvtt.com/packages/${{ env.MODULE }}
-            Repository : ${{ github.repository }}
-            Changelog  : ${{ env.CHANGELOG }}
+          webhook-url: https://discord.com/api/webhooks/${{ secrets.DISCORD_ANNOUNCEMENT_WEBHOOK_ID }}/${{ secrets.DISCORD_ANNOUNCEMENT_WEBHOOK_TOKEN }}
+          content: "<@&1194266914126581820>"
+          username: "Module Update"
+          avatar-url: "https://media.discordapp.net/attachments/1075015857719230484/1194581653792759908/bot_avatar.png"
+          embed-title: "${{ env.TITLE }} - Version ${{ env.VERSION }}"
+          embed-uril: "https://foundryvtt.com/packages/${{ env.MODULE }}"
+          embed-description: "${{ env.CHANGELOG_TEXT }}"
+          embed-color: "#ff0088"
+
