@@ -102,7 +102,7 @@ jobs:
           git config --global user.name 'ZotyDev'
           git config --global user.email 'leonardokronbauer2002@gmail.com'
 
-      # Delete the Tag
+      # Delete the Tag because yes
       - name: Delete Tag
         run: |
           git push --delete origin ${{ github.ref_name }}
