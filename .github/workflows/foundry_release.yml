@@ -75,7 +75,7 @@ jobs:
           artifacts: "module.zip,module.json"
           bodyfile: RELEASE.md
 
-      # Send the release to FoundryVTT
+      # Release it at FoundryVTT
       - name: Release Module to FoundryVTT
         run: |
           curl -X POST "https://api.foundryvtt.com/_api/packages/release_version/" \
