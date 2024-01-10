@@ -95,7 +95,7 @@ jobs:
             }
           }'
 
-      # Send a notification to discord
+      # Send a discord notification
       - name: Discord Message Notify
         uses: appleboy/discord-action@v1.0.0
         with:
