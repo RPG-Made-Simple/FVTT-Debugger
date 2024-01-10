@@ -103,9 +103,9 @@ jobs:
           git config --global user.email 'leonardokronbauer2002@gmail.com'
 
       # Delete the Tag
-      - name: Delete Tag and Release
-        uses: dev-drprasad/delete-tag-and-release@v0.2.1
-        with:
-          tag_name: ${{ github.ref_name }}
-          github_token: ${{ secrets.TAG_DELETE_TOKEN }}
+      - name: Delete Tag
+        run: |
+          git push --delete origin ${{ github.ref_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.TAG_DELETE_TOKEN }}
 
