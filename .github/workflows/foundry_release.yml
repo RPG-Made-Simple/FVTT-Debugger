@@ -36,8 +36,8 @@ jobs:
           echo "MANIFEST=$MANIFEST" >> $GITHUB_ENV
           CHANGELOG=$(jq -r '.changelog' module.json)
           echo "CHANGELOG=$CHANGELOG" >> $GITHUB_ENV
-          MINIMUN=$(jq -r '.compatibility.minimun' module.json)
-          echo "MINIMUN=$MINIMUN" >> $GITHUB_ENV
+          MINIMUM=$(jq -r '.compatibility.minimum' module.json)
+          echo "MINIMUM=$MINIMUM" >> $GITHUB_ENV
           VERIFIED=$(jq -r '.compatibility.verified' module.json)
           echo "VERIFIED=$VERIFIED" >> $GITHUB_ENV
 
@@ -63,8 +63,8 @@ jobs:
       - name: Release module to Foundry VTT
         run: |
           curl -X POST "https://api.foundryvtt.com/_api/packages/release_version/" \
-          -H 'Content-Type': 'application/json' \
-          -H 'Authorization': '${{secrets.FOUNDRY_RELEASE_TOKEN}}' \
+          -H "Content-Type": "application/json" \
+          -H "Authorization": "${{ secrets.FOUNDRY_RELEASE_TOKEN }}"" \
           -d '{
             "id": "${{ env.MODULE }}",
             "dry-run": true,
