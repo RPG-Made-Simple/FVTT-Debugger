@@ -11,8 +11,9 @@ Debugger(moduleId, prefix, should_debug, should_save)
   - Note that this will not save files by itself, it will only save the logs in the internal memory, files only get created by [`dump()`](#dump) or [`dumpAll()`](#dump-all)
 
 This is the `Debugger` constructor, you should use **the returned** value forever for the passed module, never create two Debuggers for the same module!!
+
 ```js
-// This example is how Debugger creates a Debugger for itself
+// This is how Debugger creates a Debugger for itself
 const D = new ('debugger', '🕷️ Debugger', true, false);
 ```
 This will create a `Debugger` that only outputs to console. Any attempts to use [`dump()`](#dump) with this `Debugger` will not work since logs made while `should_save` is `false` don not get saved at all, so there is no data to dump.
