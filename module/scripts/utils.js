@@ -14,7 +14,6 @@ export class Utils {
     ////////////////////////////////////////////////////////////////////////////
     static async DoesFolderExist(path) {
         const indexOfName = path.lastIndexOf('/') + 1;
-        const folderName = path.slice(indexOfName);
         const pathName = path.slice(0, indexOfName - 1);
         const folders = await FilePicker.browse('data', pathName);
         return (folders.dirs.includes(path.slice(2)));
