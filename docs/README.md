@@ -1,34 +1,14 @@
 <a href="https://foundryvtt.com/packages/debugger">
     <p align="center">
-        <img src="https://raw.githubusercontent.com/ZotyDev/FoundryVTT-Debugger/main/branding/title.png" alt="Debugger Title">
+        <img src="https://raw.githubusercontent.com/ZotyDev/FoundryVTT-Debugger/main/branding/title.png" alt="Item Tags Title">
     </p>
 </a>
 
-<p align="center">
-    <a href="https://discord.gg/RAgPXB4zG7">
-        <img src="https://discord.com/api/guilds/1071251491375042661/widget.png?style=shield"/>
-    </a>
-</p>
+A FoundryVTT library that provides some helper methods to make debugging easier, specially if you want a easy way to **save and analyse individual modules with the a timestamp**. There is no
 
-A FoundryVTT library that provides some helper methods to make debugging easier, specially if you want a easy way to **save and analyse individual modules with the a timestamp**.
+_Disclaimer: This module is not for everyone, it is something that I created to help me with some complex things that I'm currently trying to fix in other modules, I don't recommend **Debugger** for simple and/or small modules since it would be like killing a ant with a shotgun. Now, if you find yourself always needing more debugging information and fin it hard to spot the logs from your module, then **Debugger** is for you!_
 
-_Disclaimer: This module is not for everyone, it is something that I created to help me with some complex behaviors that I'm trying to fix in other modules, I don't recommend **Debugger** for simple and/or small modules since it would be like killing a ant with a shotgun. Now, if you find yourself always needing more debugging information and find it hard to spot the logs from your module, then **Debugger** is for you!_
-
-### Note for Developers (modules and macros)
-Take a look at the [Documentation](https://modules.zoty.dev/debugger/introduction.html)
-
-<a href='https://ko-fi.com/T6T8IFCB5' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi5.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
-
----
-## Supported Versions
-- **V11**
-- ~~**V12**~~ _as soon as it gets released_
-
-## Main Features
-- Create a `Debugger` with prefix and special arguments.
-- Save logs at `./debugger/`.
-  - All logs saved by doing this contains information **only** from your module.
-  - Nothing gets saved/created if not requested.
+**If you are a developer, you are looking for [this](./apiReference.md).**
 
 ## Getting Started
 First thing you should do is to create a `Debugger`, this is the object that will be used by you to interact with the module.
