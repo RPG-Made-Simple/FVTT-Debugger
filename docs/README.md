@@ -1,6 +1,6 @@
 <a href="https://foundryvtt.com/packages/debugger">
     <p align="center">
-        <img src="https://raw.githubusercontent.com/ZotyDev/FoundryVTT-Debugger/main/branding/title.png" alt="Item Tags Title">
+        <img src="https://raw.githubusercontent.com/RPG-Made-Simple/FVTT-Debugger/main/branding/title.png" alt="Chromatic Canvas Title">
     </p>
 </a>
 
@@ -10,7 +10,7 @@ A FoundryVTT library that provides some helper methods to make debugging easier,
 
 > This module is not for everyone, it is something that I created to help me with some complex things that I'm currently trying to fix in other modules, I don't recommend **Debugger** for simple and/or small modules since it would be like killing an ant with a shotgun. Now, if you find yourself always needing more debugging information and find it hard to spot the logs from your module, then **Debugger** is for you!
 
-**If you are a developer, you are looking for [this](./apiReference.md).**
+**If you are a developer, you are looking for [this](apiReference.md).**
 
 ## Getting Started
 First thing you should do is to create a `Debugger`, this is the object that will be used by you to interact with the module.

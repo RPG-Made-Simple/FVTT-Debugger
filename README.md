@@ -1,6 +1,6 @@
 <a href="https://foundryvtt.com/packages/debugger">
     <p align="center">
-        <img src="https://raw.githubusercontent.com/ZotyDev/FoundryVTT-Debugger/main/branding/title.png" alt="Debugger Title">
+        <img src="https://raw.githubusercontent.com/RPG-Made-Simple/FVTT-Debugger/main/branding/title.png" alt="Debugger Title">
     </p>
 </a>
 
@@ -14,10 +14,13 @@ A FoundryVTT library that provides some helper methods to make debugging easier,
 
 _Disclaimer: This module is not for everyone, it is something that I created to help me with some complex behaviors that I'm trying to fix in other modules, I don't recommend **Debugger** for simple and/or small modules since it would be like killing an ant with a shotgun. Now, if you find yourself always needing more debugging information and find it hard to spot the logs from your module, then **Debugger** is for you!_
 
+Do you like the module? Consider supporting it :)
+
+<a href='https://ko-fi.com/T6T8IFCB5' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi5.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+
 ### Note for Developers (modules and macros)
 Take a look at the [Documentation](https://docs.rpgmadesimple.com/FVTT-Debugger/)
 
-<a href='https://ko-fi.com/T6T8IFCB5' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi5.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
 ---
 ## Supported Versions
