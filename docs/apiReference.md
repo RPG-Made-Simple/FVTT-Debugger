@@ -1,6 +1,7 @@
 ## Debugger
 ```js
-new Debugger(moduleId: String, prefix: String, should_debug: Boolean - optional, should_save: Boolean - optional) -> Debugger
+new Debugger(moduleId: String, prefix: String, should_debug: Boolean - optional,
+  should_save: Boolean - optional) -> Debugger
 ```
 - `moduleId` - `id` of your module
 - `prefix` - Prefix for the `Debugger`
@@ -91,11 +92,13 @@ async Debugger.dump() -> Promise<void>
 ```
 ```js
 // Example
-const D = new ('debugger', '🕷️ Debugger', true, true); // Note that `should_save` is `true`
+const D = new ('debugger', '🕷️ Debugger', true, true);
+// Note that `should_save` is `true`
 
 // ...
 await D.dump();
-// Will dump the logs of the '🕷️ Debugger' module as a download, if possible will save a file to `./debugger/debugger_log.json`
+// Will dump the logs of the '🕷️ Debugger' module as a download, if possible
+// will save a file to `./debugger/debugger_log.json`
 ```
 Will download a file named `<module>.log`. If the user has enough permission, the log file will also be saved at `./debugger/<module>_log.json`.
 
