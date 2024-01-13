@@ -1,5 +1,5 @@
 * [🕷️ Debugger](/)
 
-* [API Reference](./apiReference.md)
+* [API Reference](apiReference.md)
 
-* [Other Modules](https://docs.rpgmadesimple.com//#/modules)
+* [Other Modules](https://docs.rpgmadesimple.com/#/modules)
