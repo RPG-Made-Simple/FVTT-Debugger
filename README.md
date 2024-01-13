@@ -12,7 +12,7 @@
 
 A FoundryVTT library that provides some helper methods to make debugging easier, specially if you want a easy way to **save and analyze individual module logs with a timestamp**.
 
-_Disclaimer: This module is not for everyone, it is something that I created to help me with some complex behaviors that I'm trying to fix in other modules, I don't recommend **Debugger** for simple and/or small modules since it would be like killing a ant with a shotgun. Now, if you find yourself always needing more debugging information and find it hard to spot the logs from your module, then **Debugger** is for you!_
+_Disclaimer: This module is not for everyone, it is something that I created to help me with some complex behaviors that I'm trying to fix in other modules, I don't recommend **Debugger** for simple and/or small modules since it would be like killing an ant with a shotgun. Now, if you find yourself always needing more debugging information and find it hard to spot the logs from your module, then **Debugger** is for you!_
 
 ### Note for Developers (modules and macros)
 Take a look at the [Documentation](https://docs.rpgmadesimple.com/FVTT-Debugger/)
