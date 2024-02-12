@@ -10,13 +10,13 @@
 // ? Here are all the constants used by Debugger, all static values are and
 // ? should be here.
 export class Constants {
-    static ID = 'debugger';
-    static NAME_FLAT = 'Debugger';
-    static NAME = `🕷️ ${Constants.NAME_FLAT}`;
-    static LEVEL = {
-        LOG: '',
-        INFO: '[INFO]',
-        WARN: '[WARN]',
-        ERROR: '[ERROR]',
-    }
+  static ID = 'debugger';
+  static NAME_FLAT = 'Debugger';
+  static NAME = `🕷️ ${Constants.NAME_FLAT}`;
+  static LEVEL = {
+    LOG: '',
+    INFO: '[INFO]',
+    WARN: '[WARN]',
+    ERROR: '[ERROR]',
+  }
 }

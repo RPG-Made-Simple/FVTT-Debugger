@@ -1,5 +1,10 @@
 # 🕷️ Debugger Changelog
 
+## Version 1.0.1
+
+- *Internal* - Changed indentation from `4` spaces to `2` spaces.
+- *CI/DI* - Enabled deploy on Foundry.
+
 ## Version 1.0.0
 
 This module only exists because I want better debug informations, if you don't want it, please don't use this module, it is really not intended for normal situations and/or small or simple modules. If your module already works fine and you never wanted a solution that logs things for you, then great this module is not for you! Now, if you always find it hard to spot problems and finds yourself lacking enough info to fix errors, you should use **Debugger**.

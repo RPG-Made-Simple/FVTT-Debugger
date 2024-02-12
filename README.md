@@ -1,13 +1,13 @@
 <a href="https://foundryvtt.com/packages/debugger">
-    <p align="center">
-        <img src="https://raw.githubusercontent.com/RPG-Made-Simple/FVTT-Debugger/main/branding/title.png" alt="Debugger Title">
-    </p>
+  <p align="center">
+    <img src="https://raw.githubusercontent.com/RPG-Made-Simple/FVTT-Debugger/main/branding/title.png" alt="Debugger Title">
+  </p>
 </a>
 
 <p align="center">
-    <a href="https://discord.gg/RAgPXB4zG7">
-        <img src="https://discord.com/api/guilds/1071251491375042661/widget.png?style=shield"/>
-    </a>
+  <a href="https://discord.gg/RAgPXB4zG7">
+    <img src="https://discord.com/api/guilds/1071251491375042661/widget.png?style=shield"/>
+  </a>
 </p>
 
 A FoundryVTT library that provides some helper methods to make debugging easier, specially if you want a easy way to **save and analyze individual module logs with a timestamp**.
@@ -41,7 +41,7 @@ My example is how I use **Debugger**, you could do exactly like me or in any oth
 ```js
 // constants.js
 export class Constants {
-    static D;
+  static D;
 }
 ```
 
@@ -53,21 +53,21 @@ import { Constants as C} from "./constants.js"
 // to set Debugger as a requirement, this way there is no chance of your
 // Debugger not being fully configured when used.
 Hooks.once('debugger.ready', () => {
-    // Please be careful, you want to create a "Debugger" not a "debugger"
-    C.D = new Debugger(
-        'debugger',     // Module Id
-        '🕷️ Debugger',  // Prefix - [🕷️ Debugger][INFO] This is a example
-        true, // Should it be logged to terminal? This value defaults to false
-        true, // Should it be saved to a log? This value defaults to false
-        );
+  // Please be careful, you want to create a "Debugger" not a "debugger"
+  C.D = new Debugger(
+    'debugger',     // Module Id
+    '🕷️ Debugger',  // Prefix - [🕷️ Debugger][INFO] This is a example
+    true, // Should it be logged to terminal? This value defaults to false
+    true, // Should it be saved to a log? This value defaults to false
+    );
 
-    // Now if we call:
-    C.D.info('Hey, this is a test!');
-    // Will output:
-    // [🕷️ Debugger][INFO] Hey, this is a test!
-    //
-    // Will save to log:
-    // [18:10:54.382][INFO] Hey, this is a test!
+  // Now if we call:
+  C.D.info('Hey, this is a test!');
+  // Will output:
+  // [🕷️ Debugger][INFO] Hey, this is a test!
+  //
+  // Will save to log:
+  // [18:10:54.382][INFO] Hey, this is a test!
 })
 ```
 

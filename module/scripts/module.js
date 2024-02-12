@@ -14,16 +14,16 @@ import { Debugger } from "./debugger.js";
 import { Utils } from "./utils.js";
 
 Hooks.on('init', () => {
-    Hooks.on('ready', () => {
-        // Setup the API
-        window['Debugger'] = Debugger;
+  Hooks.on('ready', () => {
+    // Setup the API
+    window['Debugger'] = Debugger;
 
-        const dbg = new Debugger('debugger', '🕷️ Debugger', true, false);
-        dbg.info('Ready!');
-        dbg.info(`Version ${game.modules.get('debugger').version}`);
-        dbg.info('Library By ZotyDev');
-        dbg.warn('Beware! Bugs may be present!!');
+    const dbg = new Debugger('debugger', '🕷️ Debugger', true, false);
+    dbg.info('Ready!');
+    dbg.info(`Version ${game.modules.get('debugger').version}`);
+    dbg.info('Library By ZotyDev');
+    dbg.warn('Beware! Bugs may be present!!');
 
-        Hooks.call('debugger.ready');
-    });
+    Hooks.call('debugger.ready');
+  });
 });
